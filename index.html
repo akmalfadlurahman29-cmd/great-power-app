@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Power | Premium Automotive Protection</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Premium Automotive Protection Solution. Protect your investment with high-quality Paint Protection Film & Window Film.">
+    <meta name="keywords" content="PPF, Window Film, Automotive Protection, Ceramic Coating, Car Detailing">
+    <meta name="author" content="Great Power">
+    <meta property="og:title" content="Great Power | Premium Automotive Protection">
+    <meta property="og:description" content="Protect your investment with high-quality Paint Protection Film & Window Film.">
+    <meta property="og:image" content="LOGO great power.png">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="LOGO great power.png" type="image/png">
+
+    <!-- Fonts: Inter for modern corporate look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icons: FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Animations: AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Slider: Swiper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        gp: {
+                            orange: '#C86227', // Approximate logo color
+                            dark: '#111111',
+                            gray: '#1F2937',
+                            light: '#F3F4F6',
+                            silver: '#D1D5DB'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for Premium Look */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Glassmorphism utilities */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .dark .glass {
+            background: rgba(17, 17, 17, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .dark .glass-nav {
+            background: rgba(17, 17, 17, 0.85);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Smooth reveal for sections */
+        section {
+            overflow: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .dark ::-webkit-scrollbar-track {
+            background: #111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C86227;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a65020;
+        }
+
+        /* Image hover zoom */
+        .img-hover-zoom {
+            overflow: hidden;
+        }
+        .img-hover-zoom img {
+            transition: transform 0.5s ease;
+        }
+        .img-hover-zoom:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Loader */
+        #loader {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+        .dark #loader { background-color: #111; }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(200, 98, 39, 0.3);
+            border-radius: 50%;
+            border-top-color: #C86227;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Custom Notification */
+        #notification {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            transform: translateY(-20px);
+            opacity: 0;
+            pointer-events: none;
+        }
+        #notification.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 dark:bg-gp-dark dark:text-gray-200 transition-colors duration-300 relative">
+
+    <!-- Loader -->
+    <div id="loader">
+        <div class="flex flex-col items-center gap-4">
+            <img src="LOGO great power.png" alt="Great Power" class="h-12 animate-pulse">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification" class="fixed top-24 left-1/2 transform -translate-x-1/2 z-[100] bg-white dark:bg-gray-800 shadow-xl rounded-lg px-6 py-3 border-l-4 hidden items-center gap-3">
+        <i id="notif-icon" class="fas fa-info-circle"></i>
+        <span id="notif-msg" class="font-medium">Notification message</span>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="navigate('home')">
+                    <img class="h-10 w-auto" src="LOGO great power.png" alt="Great Power Logo">
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="#home" class="nav-link text-sm font-medium hover:text-gp-orange transition-colors" data-i18n="nav_home">Home</a>
+                    <a href="#about" class="nav-link text-sm font-medium hover:text-gp-orange transition-colors" data-i18n="nav_about">About Us</a>
+                    <a href="#services" class="nav-link text-sm font-medium hover:text-gp-orange transition-colors" data-i18n="nav_services">Services</a>
+                    <a href="#gallery" class="nav-link text-sm font-medium hover:text-gp-orange transition-colors" data-i18n="nav_gallery">Gallery</a>
+                    <a href="#whyus" class="nav-link text-sm font-medium hover:text-gp-orange transition-colors" data-i18n="nav_whyus">Why Us</a>
+                    <a href="#contact" class="nav-link text-sm font-medium hover:text-gp-orange transition-colors" data-i18n="nav_contact">Contact</a>
+                    
+                    <div class="border-l border-gray-300 dark:border-gray-700 h-6 mx-2"></div>
+                    
+                    <!-- Language & Theme Toggles -->
+                    <button id="lang-toggle" class="text-gray-500 hover:text-gp-orange transition-colors text-sm font-bold w-8" title="Switch Language">EN</button>
+                    <button id="theme-toggle" class="text-gray-500 hover:text-gp-orange transition-colors" title="Toggle Theme">
+                        <i class="fas fa-moon text-lg"></i>
+                    </button>
+                    
+                    <button onclick="showLogin()" class="bg-gp-orange hover:bg-orange-600 text-white px-5 py-2 rounded-full text-sm font-medium transition-all shadow-md shadow-orange-500/30" data-i18n="nav_login">Login</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-4">
+                    <button id="mobile-theme-toggle" class="text-gray-500">
+                        <i class="fas fa-moon text-xl"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-gray-500 hover:text-gp-orange focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden glass-nav absolute w-full shadow-lg border-t border-gray-200 dark:border-gray-800">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium hover:text-gp-orange" data-i18n="nav_home">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium hover:text-gp-orange" data-i18n="nav_about">About Us</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium hover:text-gp-orange" data-i18n="nav_services">Services</a>
+                <a href="#gallery" class="block px-3 py-2 rounded-md text-base font-medium hover:text-gp-orange" data-i18n="nav_gallery">Gallery</a>
+                <a href="#whyus" class="block px-3 py-2 rounded-md text-base font-medium hover:text-gp-orange" data-i18n="nav_whyus">Why Us</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium hover:text-gp-orange" data-i18n="nav_contact">Contact</a>
+                <div class="flex justify-between items-center px-3 py-2">
+                    <button id="mobile-lang-toggle" class="font-bold text-gray-500">EN / ID</button>
+                    <button onclick="showLogin()" class="bg-gp-orange text-white px-4 py-1 rounded-full text-sm" data-i18n="nav_login">Login</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT VIEW -->
+    <main id="main-view">
+        
+        <!-- Hero Section -->
+        <section id="home" class="relative h-screen flex items-center justify-center overflow-hidden">
+            <!-- Background Image with Overlay -->
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&q=80&w=2069" alt="Luxury Car" class="w-full h-full object-cover object-center" />
+                <div class="absolute inset-0 bg-gradient-to-r from-black/80 to-black/40"></div>
+            </div>
+            
+            <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-16" data-aos="fade-up">
+                <span class="text-gp-orange font-semibold tracking-wider uppercase text-sm mb-4 block" data-i18n="hero_badge">Welcome to Great Power</span>
+                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-6" data-i18n="hero_title">
+                    Premium Automotive Protection Solution
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto" data-i18n="hero_sub">
+                    Protect Your Investment with High Quality Paint Protection Film & Window Film.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#contact" class="bg-gp-orange hover:bg-orange-600 text-white px-8 py-3 rounded-full font-medium transition-all shadow-lg shadow-orange-500/30 transform hover:-translate-y-1" data-i18n="btn_consult">Get Consultation</a>
+                    <a href="#services" class="glass text-white hover:bg-white hover:text-black px-8 py-3 rounded-full font-medium transition-all transform hover:-translate-y-1" data-i18n="btn_services">Our Services</a>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <a href="#about" class="text-white/70 hover:text-white">
+                    <i class="fas fa-chevron-down text-2xl"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-24 bg-white dark:bg-gp-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div data-aos="fade-right">
+                        <div class="relative img-hover-zoom rounded-2xl shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=1000" alt="PPF Installation" class="w-full h-auto rounded-2xl">
+                            <div class="absolute -bottom-6 -right-6 glass p-6 rounded-xl border border-white/20 shadow-xl hidden md:block">
+                                <p class="text-3xl font-bold text-gp-orange">10+</p>
+                                <p class="text-sm dark:text-white" data-i18n="about_exp">Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-aos="fade-left">
+                        <h2 class="text-sm font-bold text-gp-orange tracking-widest uppercase mb-2" data-i18n="nav_about">About Us</h2>
+                        <h3 class="text-3xl md:text-4xl font-bold mb-6 dark:text-white" data-i18n="about_title">Defining Excellence in Automotive Protection</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed" data-i18n="about_desc1">
+                            Great Power is the premier destination for high-end vehicle protection. We specialize in providing state-of-the-art Paint Protection Film (PPF), premium window tinting, and comprehensive ceramic coating solutions.
+                        </p>
+                        <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed" data-i18n="about_desc2">
+                            Our mission is to safeguard your investment using only the highest quality materials and certified professional installers, ensuring your vehicle maintains its showroom finish for years to come.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="flex items-start gap-4">
+                                <div class="bg-orange-100 dark:bg-orange-900/30 p-3 rounded-lg text-gp-orange">
+                                    <i class="fas fa-bullseye text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold dark:text-white" data-i18n="about_vision">Vision</h4>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400" data-i18n="about_vision_desc">To be the global leader in auto protection.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4">
+                                <div class="bg-orange-100 dark:bg-orange-900/30 p-3 rounded-lg text-gp-orange">
+                                    <i class="fas fa-gem text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold dark:text-white" data-i18n="about_mission">Quality</h4>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400" data-i18n="about_mission_desc">Uncompromising materials & craftsmanship.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-24 bg-gray-50 dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-sm font-bold text-gp-orange tracking-widest uppercase mb-2" data-i18n="nav_services">Our Services</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold dark:text-white" data-i18n="services_title">Comprehensive Protection Solutions</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Service Card 1 -->
+                    <div onclick="navigate('gallery')" class="cursor-pointer group bg-white dark:bg-gp-dark rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/20 rounded-xl flex items-center justify-center text-gp-orange text-2xl mb-6 group-hover:bg-gp-orange group-hover:text-white transition-colors">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 dark:text-white group-hover:text-gp-orange transition-colors">Paint Protection Film</h4>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm" data-i18n="srv_ppf_desc">Self-healing invisible shield that protects against scratches, rock chips, and stains.</p>
+                        <span class="text-gp-orange font-medium flex items-center gap-2 group-hover:gap-3 transition-all" data-i18n="btn_readmore">See Gallery <i class="fas fa-arrow-right text-sm"></i></span>
+                    </div>
+
+                    <!-- Service Card 2 -->
+                    <div onclick="navigate('gallery')" class="cursor-pointer group bg-white dark:bg-gp-dark rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/20 rounded-xl flex items-center justify-center text-gp-orange text-2xl mb-6 group-hover:bg-gp-orange group-hover:text-white transition-colors">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 dark:text-white group-hover:text-gp-orange transition-colors">Window Film</h4>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm" data-i18n="srv_window_desc">Premium heat rejection, UV protection, and privacy enhancement for your vehicle.</p>
+                        <span class="text-gp-orange font-medium flex items-center gap-2 group-hover:gap-3 transition-all" data-i18n="btn_readmore">See Gallery <i class="fas fa-arrow-right text-sm"></i></span>
+                    </div>
+
+                    <!-- Service Card 3 -->
+                    <div onclick="navigate('contact')" class="cursor-pointer group bg-white dark:bg-gp-dark rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800" data-aos="fade-up" data-aos-delay="300">
+                    </div>
+
+                    <!-- Service Card 2 -->
+                    <div class="group bg-white dark:bg-gp-dark rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/20 rounded-xl flex items-center justify-center text-gp-orange text-2xl mb-6 group-hover:bg-gp-orange group-hover:text-white transition-colors">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 dark:text-white">Window Film</h4>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm" data-i18n="srv_window_desc">Premium heat rejection, UV protection, and privacy enhancement for your vehicle.</p>
+                        <a href="#contact" class="text-gp-orange font-medium flex items-center gap-2 group-hover:gap-3 transition-all" data-i18n="btn_readmore">Read More <i class="fas fa-arrow-right text-sm"></i></a>
+                    </div>
+
+                    <!-- Service Card 3 -->
+                    <div class="group bg-white dark:bg-gp-dark rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800" data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/20 rounded-xl flex items-center justify-center text-gp-orange text-2xl mb-6 group-hover:bg-gp-orange group-hover:text-white transition-colors">
+                            <i class="fas fa-sparkles"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 dark:text-white">Ceramic Protection</h4>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm" data-i18n="srv_ceramic_desc">Nano-ceramic coating for extreme gloss, hydrophobicity, and chemical resistance.</p>
+                        <a href="#contact" class="text-gp-orange font-medium flex items-center gap-2 group-hover:gap-3 transition-all" data-i18n="btn_readmore">Read More <i class="fas fa-arrow-right text-sm"></i></a>
+                    </div>
+                    
+                    <!-- Service Card 4 -->
+                    <div class="group bg-white dark:bg-gp-dark rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800" data-aos="fade-up" data-aos-delay="400">
+                        <div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/20 rounded-xl flex items-center justify-center text-gp-orange text-2xl mb-6 group-hover:bg-gp-orange group-hover:text-white transition-colors">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 dark:text-white">Headlamp Protection</h4>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm" data-i18n="srv_headlamp_desc">Prevent oxidation, yellowing, and cracking of expensive headlamp housings.</p>
+                        <a href="#contact" class="text-gp-orange font-medium flex items-center gap-2 group-hover:gap-3 transition-all" data-i18n="btn_readmore">Read More <i class="fas fa-arrow-right text-sm"></i></a>
+                    </div>
+                    
+                    <!-- Service Card 5 -->
+                    <div class="group bg-white dark:bg-gp-dark rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800" data-aos="fade-up" data-aos-delay="500">
+                        <div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/20 rounded-xl flex items-center justify-center text-gp-orange text-2xl mb-6 group-hover:bg-gp-orange group-hover:text-white transition-colors">
+                            <i class="fas fa-car-side"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 dark:text-white">Car Detailing</h4>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm" data-i18n="srv_detail_desc">Comprehensive interior and exterior restoration for a flawless finish.</p>
+                        <a href="#contact" class="text-gp-orange font-medium flex items-center gap-2 group-hover:gap-3 transition-all" data-i18n="btn_readmore">Read More <i class="fas fa-arrow-right text-sm"></i></a>
+                    </div>
+
+                    <!-- Service Card 6 -->
+                    <div class="group bg-white dark:bg-gp-dark rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800" data-aos="fade-up" data-aos-delay="600">
+                        <div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/20 rounded-xl flex items-center justify-center text-gp-orange text-2xl mb-6 group-hover:bg-gp-orange group-hover:text-white transition-colors">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 dark:text-white">Fleet Protection</h4>
+                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm" data-i18n="srv_fleet_desc">Custom protection solutions for commercial vehicles and large fleets.</p>
+                        <a href="#contact" class="text-gp-orange font-medium flex items-center gap-2 group-hover:gap-3 transition-all" data-i18n="btn_readmore">Read More <i class="fas fa-arrow-right text-sm"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-24 bg-white dark:bg-gp-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                    <div data-aos="fade-right">
+                        <h2 class="text-sm font-bold text-gp-orange tracking-widest uppercase mb-2" data-i18n="nav_gallery">Portfolio</h2>
+                        <h3 class="text-3xl md:text-4xl font-bold dark:text-white" data-i18n="gallery_title">Our Latest Masterpieces</h3>
+                    </div>
+                    <!-- Simple Filter simulation -->
+                    <div class="flex flex-wrap gap-2" data-aos="fade-left">
+                        <button class="px-4 py-2 rounded-full bg-gp-orange text-white text-sm font-medium">All</button>
+                        <button class="px-4 py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium transition-colors">PPF</button>
+                        <button class="px-4 py-2 rounded-full border border-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 text-sm font-medium transition-colors">Window Film</button>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Gallery Item 1 -->
+                    <div class="group relative rounded-xl overflow-hidden cursor-pointer" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="https://images.unsplash.com/photo-1619405399517-d7fce0f13302?auto=format&fit=crop&q=80&w=600" alt="Porsche PPF" class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-gp-orange text-xs font-bold uppercase mb-1">Full Body PPF</span>
+                            <h4 class="text-white text-xl font-bold">Porsche 911 GT3</h4>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 2 (Pemasangan Window Film) -->
+                    <div class="group relative rounded-xl overflow-hidden cursor-pointer" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&q=80&w=600" alt="Window Tint Installation" class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-gp-orange text-xs font-bold uppercase mb-1">Window Film Installation</span>
+                            <h4 class="text-white text-xl font-bold">Heat Shrinking Process</h4>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 3 -->
+                    <div class="group relative rounded-xl overflow-hidden cursor-pointer" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?auto=format&fit=crop&q=80&w=600" alt="Ceramic Coating" class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-gp-orange text-xs font-bold uppercase mb-1">Ceramic Coating</span>
+                            <h4 class="text-white text-xl font-bold">BMW M4 Competition</h4>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 4 (Pemasangan PPF) -->
+                    <div class="group relative rounded-xl overflow-hidden cursor-pointer" data-aos="zoom-in" data-aos-delay="400">
+                        <img src="https://images.unsplash.com/photo-1632823462198-d1912cebe530?auto=format&fit=crop&q=80&w=600" alt="PPF Installation Process" class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-gp-orange text-xs font-bold uppercase mb-1">PPF Installation</span>
+                            <h4 class="text-white text-xl font-bold">Applying Hood Protection</h4>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 5 -->
+                    <div class="group relative rounded-xl overflow-hidden cursor-pointer" data-aos="zoom-in" data-aos-delay="500">
+                        <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&q=80&w=600" alt="Window Tint Dark" class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-gp-orange text-xs font-bold uppercase mb-1">Window Film</span>
+                            <h4 class="text-white text-xl font-bold">Premium Privacy Tint</h4>
+                        </div>
+                    </div>
+                    <!-- Gallery Item 6 -->
+                    <div class="group relative rounded-xl overflow-hidden cursor-pointer" data-aos="zoom-in" data-aos-delay="600">
+                        <img src="https://images.unsplash.com/photo-1555353540-64fd1ebbaa33?auto=format&fit=crop&q=80&w=600" alt="Car Detailing" class="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                            <span class="text-gp-orange text-xs font-bold uppercase mb-1">Car Detailing</span>
+                            <h4 class="text-white text-xl font-bold">Exterior Restoration</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section id="whyus" class="py-24 bg-gray-900 text-white relative">
+            <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-sm font-bold text-gp-orange tracking-widest uppercase mb-2" data-i18n="nav_whyus">Why Choose Us</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold" data-i18n="whyus_title">The Great Power Advantage</h3>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-16 h-16 mx-auto bg-gray-800 rounded-full flex items-center justify-center text-gp-orange text-2xl mb-4 shadow-lg border border-gray-700">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Certified Team</h4>
+                        <p class="text-gray-400 text-sm">Factory trained installers.</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-16 h-16 mx-auto bg-gray-800 rounded-full flex items-center justify-center text-gp-orange text-2xl mb-4 shadow-lg border border-gray-700">
+                            <i class="fas fa-layer-group"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Premium Material</h4>
+                        <p class="text-gray-400 text-sm">Top-tier global brands only.</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="300">
+                        <div class="w-16 h-16 mx-auto bg-gray-800 rounded-full flex items-center justify-center text-gp-orange text-2xl mb-4 shadow-lg border border-gray-700">
+                            <i class="fas fa-file-contract"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">Official Warranty</h4>
+                        <p class="text-gray-400 text-sm">Up to 10 years guarantee.</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="400">
+                        <div class="w-16 h-16 mx-auto bg-gray-800 rounded-full flex items-center justify-center text-gp-orange text-2xl mb-4 shadow-lg border border-gray-700">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4 class="font-bold mb-2">After Sales</h4>
+                        <p class="text-gray-400 text-sm">Dedicated customer support.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="py-24 bg-gray-50 dark:bg-gray-900 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-sm font-bold text-gp-orange tracking-widest uppercase mb-2">Testimonials</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold dark:text-white">What Our Clients Say</h3>
+                </div>
+
+                <!-- Swiper -->
+                <div class="swiper testimonialSwiper pb-12" data-aos="fade-up">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white dark:bg-gp-dark p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 relative">
+                                <i class="fas fa-quote-left text-4xl text-gray-200 dark:text-gray-800 absolute top-6 right-8"></i>
+                                <div class="flex text-yellow-400 mb-4 text-sm">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 mb-6 italic">"The PPF installation on my new car is virtually invisible. The team at Great Power is highly professional and meticulous. Highly recommended!"</p>
+                                <div class="flex items-center gap-4">
+                                    <img src="https://ui-avatars.com/api/?name=Budi+Santoso&background=random" alt="User" class="w-12 h-12 rounded-full">
+                                    <div>
+                                        <h5 class="font-bold dark:text-white">Budi Santoso</h5>
+                                        <p class="text-xs text-gray-500">Porsche Owner</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white dark:bg-gp-dark p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 relative">
+                                <i class="fas fa-quote-left text-4xl text-gray-200 dark:text-gray-800 absolute top-6 right-8"></i>
+                                <div class="flex text-yellow-400 mb-4 text-sm">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 mb-6 italic">"Window film quality is top notch. Heat rejection is significantly noticeable. Fast installation and premium waiting lounge."</p>
+                                <div class="flex items-center gap-4">
+                                    <img src="https://ui-avatars.com/api/?name=Michael+Chen&background=random" alt="User" class="w-12 h-12 rounded-full">
+                                    <div>
+                                        <h5 class="font-bold dark:text-white">Michael Chen</h5>
+                                        <p class="text-xs text-gray-500">BMW Enthusiast</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="swiper-slide">
+                            <div class="bg-white dark:bg-gp-dark p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800 relative">
+                                <i class="fas fa-quote-left text-4xl text-gray-200 dark:text-gray-800 absolute top-6 right-8"></i>
+                                <div class="flex text-yellow-400 mb-4 text-sm">
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 mb-6 italic">"Great service for Ceramic Coating. My car looks glossier than when it left the showroom. Thanks Great Power!"</p>
+                                <div class="flex items-center gap-4">
+                                    <img src="https://ui-avatars.com/api/?name=Sarah+Wijaya&background=random" alt="User" class="w-12 h-12 rounded-full">
+                                    <div>
+                                        <h5 class="font-bold dark:text-white">Sarah Wijaya</h5>
+                                        <p class="text-xs text-gray-500">Mercedes Owner</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="py-24 bg-white dark:bg-gp-dark">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16" data-aos="fade-up">
+                    <h2 class="text-sm font-bold text-gp-orange tracking-widest uppercase mb-2">FAQ</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold dark:text-white">Frequently Asked Questions</h3>
+                </div>
+
+                <div class="space-y-4" data-aos="fade-up">
+                    <!-- FAQ 1 -->
+                    <div class="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+                        <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none">
+                            <span class="font-semibold dark:text-white">Berapa lama proses pemasangan PPF?</span>
+                            <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 py-4 text-gray-600 dark:text-gray-400 bg-white dark:bg-gp-dark">
+                            Waktu pemasangan PPF full body biasanya memakan waktu 3 hingga 5 hari kerja, tergantung pada ukuran dan tingkat kesulitan mobil. Kami memastikan detail pengerjaan yang sempurna.
+                        </div>
+                    </div>
+                    <!-- FAQ 2 -->
+                    <div class="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+                        <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none">
+                            <span class="font-semibold dark:text-white">Apakah garansi mencakup menguningnya PPF?</span>
+                            <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 py-4 text-gray-600 dark:text-gray-400 bg-white dark:bg-gp-dark">
+                            Ya, material premium kami memiliki garansi resmi hingga 10 tahun yang mencakup masalah menguning (yellowing), retak, dan pengelupasan akibat cacat pabrik.
+                        </div>
+                    </div>
+                    <!-- FAQ 3 -->
+                    <div class="border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+                        <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center bg-gray-50 dark:bg-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus:outline-none">
+                            <span class="font-semibold dark:text-white">Bisa cuci mobil setelah pasang kaca film?</span>
+                            <i class="fas fa-chevron-down text-gray-500 transition-transform duration-300"></i>
+                        </button>
+                        <div class="faq-content hidden px-6 py-4 text-gray-600 dark:text-gray-400 bg-white dark:bg-gp-dark">
+                            Kami menyarankan untuk tidak membuka kaca jendela selama 3-5 hari setelah pemasangan, dan hindari membersihkan bagian dalam kaca selama waktu tersebut agar lem merekat sempurna.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 bg-gray-50 dark:bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                    <!-- Contact Info -->
+                    <div data-aos="fade-right">
+                        <h2 class="text-sm font-bold text-gp-orange tracking-widest uppercase mb-2" data-i18n="nav_contact">Contact Us</h2>
+                        <h3 class="text-3xl md:text-4xl font-bold mb-8 dark:text-white">Get in Touch with Experts</h3>
+                        
+                        <div class="space-y-6 mb-12">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-white dark:bg-gp-dark rounded-full flex items-center justify-center text-gp-orange shadow-sm border border-gray-100 dark:border-gray-800 flex-shrink-0">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold dark:text-white mb-1">Workshop Location</h5>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm">Bizpark PIK 2 A3 No 16<br>Jakarta, Indonesia</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-white dark:bg-gp-dark rounded-full flex items-center justify-center text-gp-orange shadow-sm border border-gray-100 dark:border-gray-800 flex-shrink-0">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold dark:text-white mb-1">WhatsApp</h5>
+                                    <a href="https://wa.me/6281381906733" target="_blank" class="block text-gray-600 dark:text-gray-400 text-sm hover:text-gp-orange transition-colors">+62 813-8190-6733</a>
+                                    <a href="https://wa.me/6281285885098" target="_blank" class="block text-gray-600 dark:text-gray-400 text-sm hover:text-gp-orange transition-colors">+62 812-8588-5098</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-white dark:bg-gp-dark rounded-full flex items-center justify-center text-gp-orange shadow-sm border border-gray-100 dark:border-gray-800 flex-shrink-0">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold dark:text-white mb-1">Email</h5>
+                                    <p class="text-gray-600 dark:text-gray-400 text-sm italic">info@greatpower.com (contoh)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dummy Map -->
+                        <div class="w-full h-64 bg-gray-200 dark:bg-gray-800 rounded-xl overflow-hidden flex items-center justify-center border border-gray-300 dark:border-gray-700">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3967.112108169999!2d106.6975!3d-6.0792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fde86d9961ab%3A0x6e76d9102c9a98e3!2sBizpark%20PIK%202!5e0!3m2!1sen!2sid!4v1688647700000!5m2!1sen!2sid" 
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div data-aos="fade-left" class="bg-white dark:bg-gp-dark p-8 md:p-10 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-800">
+                        <h4 class="text-2xl font-bold mb-6 dark:text-white">Send a Message</h4>
+                        <form id="contactForm" onsubmit="handleContact(event)">
+                            <div class="mb-5">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Full Name</label>
+                                <input type="text" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-gp-orange focus:border-transparent transition-colors outline-none" placeholder="John Doe">
+                            </div>
+                            <div class="mb-5">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email Address</label>
+                                <input type="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-gp-orange focus:border-transparent transition-colors outline-none" placeholder="john@example.com">
+                            </div>
+                            <div class="mb-5">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Phone Number / WA</label>
+                                <input type="tel" required class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-gp-orange focus:border-transparent transition-colors outline-none" placeholder="+62 812...">
+                            </div>
+                            <div class="mb-6">
+                                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Message</label>
+                                <textarea required rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:ring-2 focus:ring-gp-orange focus:border-transparent transition-colors outline-none resize-none" placeholder="I am interested in PPF for my car..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-gp-orange hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg transition-colors shadow-lg shadow-orange-500/30 flex justify-center items-center gap-2">
+                                <span>Send Message</span>
+                                <i class="fas fa-paper-plane text-sm"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- LOGIN VIEW (Hidden by default, acts as full page overlay) -->
+    <div id="login-view" class="hidden fixed inset-0 z-[60] bg-white dark:bg-gp-dark overflow-y-auto">
+        <div class="min-h-screen flex items-center justify-center p-4 relative">
+            <!-- Background Image -->
+            <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80&w=2000" alt="Login BG" class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-black/70 backdrop-blur-sm"></div>
+            </div>
+
+            <!-- Close Button -->
+            <button onclick="hideLogin()" class="absolute top-6 right-6 z-20 text-white hover:text-gp-orange text-2xl focus:outline-none transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Login Card -->
+            <div class="relative z-10 w-full max-w-md glass p-8 rounded-2xl shadow-2xl animate-fade-in-up">
+                <div class="text-center mb-8">
+                    <img src="LOGO great power.png" alt="Logo" class="h-12 mx-auto mb-4 filter drop-shadow-lg">
+                    <h2 class="text-2xl font-bold text-white mb-2">Welcome Back</h2>
+                    <p class="text-gray-300 text-sm">Sign in to your account</p>
+                </div>
+
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="mb-5">
+                        <label class="block text-sm font-medium text-gray-200 mb-2">Email</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-gray-400"></i>
+                            </div>
+                            <input type="email" id="loginEmail" required class="w-full pl-10 pr-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gp-orange focus:border-transparent transition-all" placeholder="admin@greatpower.com">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="block text-sm font-medium text-gray-200">Password</label>
+                            <a href="#" class="text-xs text-gp-orange hover:text-white transition-colors">Forgot Password?</a>
+                        </div>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-gray-400"></i>
+                            </div>
+                            <input type="password" id="loginPassword" required class="w-full pl-10 pr-10 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-gp-orange focus:border-transparent transition-all" placeholder="••••••••">
+                            <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-white focus:outline-none">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <p id="passwordError" class="text-red-400 text-xs mt-1 hidden">Password must be at least 6 characters.</p>
+                    </div>
+                    
+                    <div class="flex items-center mb-6">
+                        <input type="checkbox" id="remember" class="w-4 h-4 rounded border-gray-300 text-gp-orange focus:ring-gp-orange bg-white/10">
+                        <label for="remember" class="ml-2 text-sm text-gray-300">Remember Me</label>
+                    </div>
+
+                    <button type="submit" id="loginBtn" class="w-full bg-gp-orange hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-lg transition-all shadow-lg shadow-orange-500/30 flex justify-center items-center">
+                        <span id="loginBtnText">Sign In</span>
+                        <div id="loginSpinner" class="hidden spinner border-2 w-5 h-5 ml-2 border-t-white"></div>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <img src="LOGO great power.png" alt="Logo" class="h-10 mb-6">
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                        Premium Automotive Protection Solution. We provide the highest quality PPF and Window Film to protect your valuable investment.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gp-orange hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gp-orange hover:text-white transition-all"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-400 hover:bg-gp-orange hover:text-white transition-all"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="text-gray-400 hover:text-gp-orange text-sm transition-colors">About Us</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gp-orange text-sm transition-colors">Our Services</a></li>
+                        <li><a href="#gallery" class="text-gray-400 hover:text-gp-orange text-sm transition-colors">Portfolio</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gp-orange text-sm transition-colors">Career</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gp-orange text-sm transition-colors">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-gp-orange text-sm transition-colors">PPF Installation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gp-orange text-sm transition-colors">Window Film</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gp-orange text-sm transition-colors">Ceramic Coating</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gp-orange text-sm transition-colors">Car Detailing</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-lg font-bold mb-6">Contact</h4>
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt text-gp-orange mt-1"></i>
+                            <span class="text-gray-400 text-sm">Bizpark PIK 2 A3 No 16, Jakarta</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fab fa-whatsapp text-gp-orange"></i>
+                            <span class="text-gray-400 text-sm">+62 813-8190-6733</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-gp-orange"></i>
+                            <span class="text-gray-400 text-sm italic">info@greatpower.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-gray-500 text-sm">© 2026 Great Power. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <!-- Popup Menu -->
+        <div id="wa-popup" class="hidden absolute bottom-16 right-0 bg-white dark:bg-gray-800 rounded-xl shadow-2xl border border-gray-200 dark:border-gray-700 p-2 w-64 mb-2 transform scale-95 opacity-0 transition-all duration-200 origin-bottom-right">
+            <div class="p-3 border-b border-gray-100 dark:border-gray-700">
+                <h5 class="font-bold text-gray-800 dark:text-white text-sm">Chat with us!</h5>
+                <p class="text-xs text-gray-500">Pilih nomor admin untuk dihubungi</p>
+            </div>
+            <div class="p-2 space-y-2">
+                <a href="https://wa.me/6281381906733" target="_blank" class="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors group">
+                    <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600 group-hover:bg-green-500 group-hover:text-white transition-colors">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div>
+                        <div class="text-sm font-semibold text-gray-800 dark:text-gray-200">Admin 1</div>
+                        <div class="text-xs text-gray-500">+62 813-8190-6733</div>
+                    </div>
+                </a>
+                <a href="https://wa.me/6281285885098" target="_blank" class="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors group">
+                    <div class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600 group-hover:bg-green-500 group-hover:text-white transition-colors">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <div>
+                        <div class="text-sm font-semibold text-gray-800 dark:text-gray-200">Admin 2</div>
+                        <div class="text-xs text-gray-500">+62 812-8588-5098</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Main Button -->
+        <button id="wa-btn" class="w-14 h-14 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full flex items-center justify-center text-3xl shadow-lg shadow-green-500/30 transition-transform hover:scale-110 focus:outline-none relative">
+            <i class="fab fa-whatsapp"></i>
+            <span class="absolute top-0 right-0 w-4 h-4 bg-red-500 border-2 border-white dark:border-gray-900 rounded-full animate-ping"></span>
+            <span class="absolute top-0 right-0 w-4 h-4 bg-red-500 border-2 border-white dark:border-gray-900 rounded-full"></span>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+    <script>
+        // --- 1. INITIALIZATION & SETUP ---
+        document.addEventListener("DOMContentLoaded", () => {
+            // Remove Loader
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 500);
+            }, 1000); // Artificial delay for effect
+
+            // Init AOS
+            AOS.init({
+                duration: 800,
+                once: true,
+                offset: 100,
+            });
+
+            // Init Swiper
+            new Swiper(".testimonialSwiper", {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                pagination: {
+                    el: ".swiper-pagination",
+                    clickable: true,
+                },
+                breakpoints: {
+                    768: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 },
+                },
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                }
+            });
+
+            initTheme();
+            initLanguage();
+            setupEventListeners();
+        });
+
+        // --- 2. THEME MANAGEMENT (Dark/Light) ---
+        const themeBtn = document.getElementById('theme-toggle');
+        const mobileThemeBtn = document.getElementById('mobile-theme-toggle');
+        const htmlElement = document.documentElement;
+
+        function initTheme() {
+            // Check local storage or system preference
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                htmlElement.classList.add('dark');
+                updateThemeIcons(true);
+            } else {
+                htmlElement.classList.remove('dark');
+                updateThemeIcons(false);
+            }
+        }
+
+        function toggleTheme() {
+            const isDark = htmlElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            updateThemeIcons(isDark);
+        }
+
+        function updateThemeIcons(isDark) {
+            const iconHtml = isDark ? '<i class="fas fa-sun text-lg"></i>' : '<i class="fas fa-moon text-lg"></i>';
+            themeBtn.innerHTML = iconHtml;
+            mobileThemeBtn.innerHTML = isDark ? '<i class="fas fa-sun text-xl"></i>' : '<i class="fas fa-moon text-xl"></i>';
+        }
+
+        themeBtn.addEventListener('click', toggleTheme);
+        mobileThemeBtn.addEventListener('click', toggleTheme);
+
+        // --- 3. LANGUAGE MANAGEMENT ---
+        const translations = {
+            en: {
+                nav_home: "Home", nav_about: "About Us", nav_services: "Services", 
+                nav_gallery: "Gallery", nav_whyus: "Why Us", nav_contact: "Contact", nav_login: "Login",
+                hero_badge: "Welcome to Great Power",
+                hero_title: "Premium Automotive Protection Solution",
+                hero_sub: "Protect Your Investment with High Quality Paint Protection Film & Window Film.",
+                btn_consult: "Get Consultation", btn_services: "Our Services", btn_readmore: "Read More",
+                about_exp: "Years Experience",
+                about_title: "Defining Excellence in Automotive Protection",
+                about_desc1: "Great Power is the premier destination for high-end vehicle protection. We specialize in providing state-of-the-art Paint Protection Film (PPF), premium window tinting, and comprehensive ceramic coating solutions.",
+                about_desc2: "Our mission is to safeguard your investment using only the highest quality materials and certified professional installers.",
+                about_vision: "Vision", about_vision_desc: "To be the global leader in auto protection.",
+                about_mission: "Quality", about_mission_desc: "Uncompromising materials & craftsmanship.",
+                services_title: "Comprehensive Protection Solutions",
+                srv_ppf_desc: "Self-healing invisible shield that protects against scratches, rock chips, and stains.",
+                srv_window_desc: "Premium heat rejection, UV protection, and privacy enhancement for your vehicle.",
+                srv_ceramic_desc: "Nano-ceramic coating for extreme gloss, hydrophobicity, and chemical resistance.",
+                srv_headlamp_desc: "Prevent oxidation, yellowing, and cracking of expensive headlamp housings.",
+                srv_detail_desc: "Comprehensive interior and exterior restoration for a flawless finish.",
+                srv_fleet_desc: "Custom protection solutions for commercial vehicles and large fleets.",
+                gallery_title: "Our Latest Masterpieces",
+                whyus_title: "The Great Power Advantage"
+            },
+            id: {
+                nav_home: "Beranda", nav_about: "Tentang Kami", nav_services: "Layanan", 
+                nav_gallery: "Galeri", nav_whyus: "Mengapa Kami", nav_contact: "Kontak", nav_login: "Masuk",
+                hero_badge: "Selamat Datang di Great Power",
+                hero_title: "Solusi Perlindungan Otomotif Premium",
+                hero_sub: "Lindungi Investasi Anda dengan Paint Protection Film & Kaca Film Kualitas Tinggi.",
+                btn_consult: "Dapatkan Konsultasi", btn_services: "Layanan Kami", btn_readmore: "Selengkapnya",
+                about_exp: "Tahun Pengalaman",
+                about_title: "Mendefinisikan Keunggulan dalam Proteksi Kendaraan",
+                about_desc1: "Great Power adalah tujuan utama untuk perlindungan kendaraan kelas atas. Kami berspesialisasi dalam menyediakan Paint Protection Film (PPF), kaca film premium, dan solusi ceramic coating yang komprehensif.",
+                about_desc2: "Misi kami adalah menjaga investasi Anda dengan hanya menggunakan material kualitas terbaik dan teknisi bersertifikat.",
+                about_vision: "Visi", about_vision_desc: "Menjadi pemimpin global dalam proteksi mobil.",
+                about_mission: "Kualitas", about_mission_desc: "Material & pengerjaan tanpa kompromi.",
+                services_title: "Solusi Perlindungan Komprehensif",
+                srv_ppf_desc: "Perisai tak terlihat yang dapat menyembuhkan diri, melindungi dari goresan dan batu.",
+                srv_window_desc: "Penolakan panas premium, perlindungan UV, dan privasi untuk kendaraan Anda.",
+                srv_ceramic_desc: "Lapisan nano-ceramic untuk kilap ekstrem, efek daun talas, dan tahan bahan kimia.",
+                srv_headlamp_desc: "Mencegah oksidasi, menguning, dan retak pada mika lampu kendaraan mahal.",
+                srv_detail_desc: "Restorasi interior dan eksterior komprehensif untuk hasil akhir yang sempurna.",
+                srv_fleet_desc: "Solusi perlindungan khusus untuk kendaraan komersial dan armada besar.",
+                gallery_title: "Karya Terbaik Kami",
+                whyus_title: "Keunggulan Great Power"
+            }
+        };
+
+        let currentLang = 'en';
+        const langToggleBtn = document.getElementById('lang-toggle');
+        const mobileLangToggleBtn = document.getElementById('mobile-lang-toggle');
+
+        function initLanguage() {
+            const savedLang = localStorage.getItem('language');
+            if (savedLang && (savedLang === 'en' || savedLang === 'id')) {
+                currentLang = savedLang;
+            }
+            applyTranslations(currentLang);
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'id' : 'en';
+            localStorage.setItem('language', currentLang);
+            applyTranslations(currentLang);
+            showNotification(`Language changed to ${currentLang.toUpperCase()}`, 'info');
+        }
+
+        function applyTranslations(lang) {
+            document.querySelectorAll('[data-i18n]').forEach(elem => {
+                const key = elem.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    elem.textContent = translations[lang][key];
+                }
+            });
+            // Update button texts
+            langToggleBtn.textContent = lang === 'en' ? 'ID' : 'EN';
+            mobileLangToggleBtn.textContent = lang === 'en' ? 'Switch to ID' : 'Switch to EN';
+        }
+
+        langToggleBtn.addEventListener('click', toggleLanguage);
+        mobileLangToggleBtn.addEventListener('click', toggleLanguage);
+
+
+        // --- 4. UI INTERACTIONS & ROUTING (Single File SPA feel) ---
+        
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('glass-nav', 'shadow-sm');
+                nav.classList.remove('py-2'); // adjust padding if needed
+            } else {
+                nav.classList.remove('glass-nav', 'shadow-sm');
+                nav.classList.add('py-2');
+            }
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        // Navigation (Smooth Scroll handled by CSS scroll-smooth on html)
+        function navigate(sectionId) {
+            const section = document.getElementById(sectionId);
+            if(section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+                // Make sure main view is visible
+                document.getElementById('main-view').classList.remove('hidden');
+                document.getElementById('login-view').classList.add('hidden');
+            }
+        }
+
+        // Login View Logic
+        function showLogin() {
+            document.getElementById('login-view').classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            mobileMenu.classList.add('hidden'); // Close mobile menu if open
+        }
+
+        function hideLogin() {
+            document.getElementById('login-view').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // FAQ Accordion
+        document.querySelectorAll('.faq-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                const content = button.nextElementSibling;
+                const icon = button.querySelector('i');
+                
+                // Close all others
+                document.querySelectorAll('.faq-content').forEach(c => {
+                    if(c !== content) c.classList.add('hidden');
+                });
+                document.querySelectorAll('.faq-btn i').forEach(i => {
+                    if(i !== icon) i.classList.remove('rotate-180');
+                });
+
+                // Toggle current
+                content.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // WhatsApp Popup
+        const waBtn = document.getElementById('wa-btn');
+        const waPopup = document.getElementById('wa-popup');
+        
+        waBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Prevent document click from closing immediately
+            if(waPopup.classList.contains('hidden')) {
+                waPopup.classList.remove('hidden');
+                // Small delay to allow display:block before adding transform classes
+                setTimeout(() => {
+                    waPopup.classList.remove('scale-95', 'opacity-0');
+                    waPopup.classList.add('scale-100', 'opacity-100');
+                }, 10);
+            } else {
+                closeWaPopup();
+            }
+        });
+
+        function closeWaPopup() {
+            waPopup.classList.remove('scale-100', 'opacity-100');
+            waPopup.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                waPopup.classList.add('hidden');
+            }, 200); // match transition duration
+        }
+
+        // Close WA popup when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!waPopup.contains(e.target) && !waBtn.contains(e.target)) {
+                closeWaPopup();
+            }
+        });
+
+
+        // --- 5. FORM VALIDATION & HANDLING ---
+
+        // Custom Notification Function (Instead of alert)
+        function showNotification(message, type = 'success') {
+            const notif = document.getElementById('notification');
+            const icon = document.getElementById('notif-icon');
+            const msgEl = document.getElementById('notif-msg');
+            
+            msgEl.textContent = message;
+            
+            // Style based on type
+            notif.className = `fixed top-24 left-1/2 transform -translate-x-1/2 z-[100] shadow-xl rounded-lg px-6 py-3 border-l-4 flex items-center gap-3 transition-all duration-300 ${
+                type === 'success' ? 'bg-green-50 dark:bg-green-900/50 border-green-500 text-green-700 dark:text-green-300' :
+                type === 'error' ? 'bg-red-50 dark:bg-red-900/50 border-red-500 text-red-700 dark:text-red-300' :
+                'bg-blue-50 dark:bg-blue-900/50 border-blue-500 text-blue-700 dark:text-blue-300' // info
+            }`;
+            
+            icon.className = `fas ${
+                type === 'success' ? 'fa-check-circle' :
+                type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle'
+            }`;
+
+            // Show
+            notif.classList.add('show');
+
+            // Hide after 3 seconds
+            setTimeout(() => {
+                notif.classList.remove('show');
+            }, 3000);
+        }
+
+        // Contact Form Handle
+        function handleContact(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+
+            // Simulate API call
+            setTimeout(() => {
+                showNotification(currentLang === 'id' ? 'Pesan berhasil dikirim! Tim kami akan segera menghubungi Anda.' : 'Message sent successfully! Our team will contact you soon.', 'success');
+                e.target.reset();
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 1500);
+        }
+
+        // Login Form Logic
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('loginPassword');
+        
+        togglePassword.addEventListener('click', function () {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash text-gp-orange"></i>';
+        });
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = passwordInput.value;
+            const errorMsg = document.getElementById('passwordError');
+            
+            // Basic Validation
+            if(password.length < 6) {
+                errorMsg.classList.remove('hidden');
+                passwordInput.classList.add('border-red-500');
+                return;
+            } else {
+                errorMsg.classList.add('hidden');
+                passwordInput.classList.remove('border-red-500');
+            }
+
+            // Simulate loading state
+            const btnText = document.getElementById('loginBtnText');
+            const spinner = document.getElementById('loginSpinner');
+            const btn = document.getElementById('loginBtn');
+            
+            btnText.textContent = 'Authenticating...';
+            spinner.classList.remove('hidden');
+            btn.disabled = true;
+            btn.classList.add('opacity-80', 'cursor-not-allowed');
+
+            // Simulate API Request
+            setTimeout(() => {
+                spinner.classList.add('hidden');
+                btnText.textContent = 'Sign In';
+                btn.disabled = false;
+                btn.classList.remove('opacity-80', 'cursor-not-allowed');
+                
+                // Simulate success
+                showNotification('Login successful! Redirecting to dashboard...', 'success');
+                
+                // Auto close after success
+                setTimeout(() => {
+                    hideLogin();
+                    e.target.reset();
+                }, 1500);
+
+            }, 2000);
+        }
+
+        function setupEventListeners() {
+           // Any additional specific listeners can go here
+        }
+    </script>
+</body>
+</html>
