@@ -133,7 +133,7 @@ export default function App() {
           <div className="absolute bottom-16 right-0 bg-gray-800 p-4 rounded-xl w-64 shadow-2xl">
             <p className="mb-2 font-bold">Chat Admin</p>
             <a href="https://wa.me/6281381906733" className="block py-2 hover:text-orange-500">+62 813-8190-6733</a>
-            <a href="https://wa.me/6281285885098" className="block py-2 hover:text-orange-500">+62 812-8588-5098</a>
+            <a href="https://wa.me/6287886876139" className="block py-2 hover:text-orange-500">+62 878-8687-6139</a>
           </div>
         )}
       </div>
