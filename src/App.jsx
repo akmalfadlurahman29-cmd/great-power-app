@@ -4,7 +4,7 @@ import {
   Menu, X, Moon, MapPin, Mail, Phone, ArrowRight, MessageSquare, 
   Lock, User, CheckCircle, Info
 } from 'lucide-react';
-
+import WindowFilmCatalog from './WindowFilmCatalog';
 const translations = {
   en: {
     nav_home: "Home", nav_about: "About Us", nav_services: "Services", 
@@ -107,6 +107,12 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
+      {/* Katalog Window Film */}
+      <div className="py-10 bg-black px-4">
+        <div className="max-w-4xl mx-auto">
+          <WindowFilmCatalog />
+        </div>
+      </div>
       <section id="contact" className="py-20 bg-black">
         <div className="max-w-4xl mx-auto px-4">
           <div className="bg-gray-900 p-8 rounded-2xl">

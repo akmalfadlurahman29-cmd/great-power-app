@@ -30,12 +30,13 @@ export default function WindowFilmCatalog() {
               <td className="p-2 border">{item.cat}</td>
               <td className="p-2 border">{item.vlt}</td>
               <td className="p-2 border">{item.irr940}</td>
+              <td className="p-2 border">{item.irr1400}</td> {/* TAMBAHKAN BARIS INI */}
             </tr>
           ))}
         </tbody>
       </table>
       <a 
-        href="https://wa.me/62812xxxxxxxxx" // Ganti dengan nomor admin Anda
+        href="https://wa.me/6287886876139" // Ganti dengan nomor admin Anda
         className="mt-4 block text-center bg-green-500 text-white py-2 rounded-lg hover:bg-green-600"
       >
         Tanya Admin Tentang Kaca Film
