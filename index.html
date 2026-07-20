@@ -317,8 +317,8 @@
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
- <!-- Service Card 1 (PPF) -->
+
+<!-- Service Card 1 (PPF) -->
 <div onclick="event.stopPropagation(); document.getElementById('katalog-ppf').classList.remove('hidden'); document.getElementById('katalog-ppf').scrollIntoView({behavior: 'smooth'});" 
      class="cursor-pointer group bg-white dark:bg-gp-dark rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800 flex flex-col justify-between" 
      data-aos="fade-up" data-aos-delay="100">
@@ -332,7 +332,7 @@
     </div>
 
     <span class="text-gp-orange font-medium flex items-center gap-2 group-hover:gap-3 transition-all">
-        Lihat Spesifikasi <i class="fas fa-arrow-right text-sm"></i>
+        <span data-i18n="btn_view_specs">View Specifications</span> <i class="fas fa-arrow-right text-sm"></i>
     </span>
 </div>
                    <!-- Service Card 2 (Window Film) -->
@@ -349,7 +349,7 @@
     <button onclick="document.getElementById('katalog-kaca').classList.remove('hidden'); document.getElementById('katalog-kaca').scrollIntoView({behavior: 'smooth'})" 
            class="text-gp-orange font-medium flex items-center gap-2 group-hover:gap-3 transition-all" 
            data-i18n="btn_readmore">
-       Read More <i class="fas fa-arrow-right text-sm"></i>
+       <span data-i18n="btn_readmore_text">Read More</span> <i class="fas fa-arrow-right text-sm"></i>
    </button>
 </div>
                     <!-- Service Card 3 -->
