@@ -327,30 +327,20 @@
                         <span class="text-gp-orange font-medium flex items-center gap-2 group-hover:gap-3 transition-all" data-i18n="btn_readmore">See Gallery <i class="fas fa-arrow-right text-sm"></i></span>
                     </div>
 
-                    <!-- Service Card 2 -->
-                    <div onclick="navigate('gallery')" class="cursor-pointer group bg-white dark:bg-gp-dark rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800" data-aos="fade-up" data-aos-delay="200">
-                        <div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/20 rounded-xl flex items-center justify-center text-gp-orange text-2xl mb-6 group-hover:bg-gp-orange group-hover:text-white transition-colors">
-                            <i class="fas fa-sun"></i>
-                        </div>
-                        <h4 class="text-xl font-bold mb-3 dark:text-white group-hover:text-gp-orange transition-colors">Window Film</h4>
-                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm" data-i18n="srv_window_desc">Premium heat rejection, UV protection, and privacy enhancement for your vehicle.</p>
-                        <span class="text-gp-orange font-medium flex items-center gap-2 group-hover:gap-3 transition-all" data-i18n="btn_readmore">See Gallery <i class="fas fa-arrow-right text-sm"></i></span>
-                    </div>
-
-                    <!-- Service Card 3 -->
-                    <div onclick="navigate('contact')" class="cursor-pointer group bg-white dark:bg-gp-dark rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800" data-aos="fade-up" data-aos-delay="300">
-                    </div>
-
-                    <!-- Service Card 2 -->
-                    <div class="group bg-white dark:bg-gp-dark rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800" data-aos="fade-up" data-aos-delay="200">
-                        <div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/20 rounded-xl flex items-center justify-center text-gp-orange text-2xl mb-6 group-hover:bg-gp-orange group-hover:text-white transition-colors">
-                            <i class="fas fa-sun"></i>
-                        </div>
-                        <h4 class="text-xl font-bold mb-3 dark:text-white">Window Film</h4>
-                        <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm" data-i18n="srv_window_desc">Premium heat rejection, UV protection, and privacy enhancement for your vehicle.</p>
-                        <a href="#contact" class="text-gp-orange font-medium flex items-center gap-2 group-hover:gap-3 transition-all" data-i18n="btn_readmore">Read More <i class="fas fa-arrow-right text-sm"></i></a>
-                    </div>
-
+                    <!-- Service Card 2 (Window Film) -->
+<div class="group bg-white dark:bg-gp-dark rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800" data-aos="fade-up" data-aos-delay="200">
+    <div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/20 rounded-xl flex items-center justify-center text-gp-orange text-2xl mb-6 group-hover:bg-gp-orange group-hover:text-white transition-colors">
+        <i class="fas fa-sun"></i>
+    </div>
+    <h4 class="text-xl font-bold mb-3 dark:text-white group-hover:text-gp-orange transition-colors">Window Film</h4>
+    <p class="text-gray-600 dark:text-gray-400 mb-6 text-sm">Premium heat rejection, UV protection, and privacy enhancement for your vehicle.</p>
+    
+    <!-- Tombol untuk membuka katalog -->
+    <button onclick="document.getElementById('katalog-kaca').classList.remove('hidden'); document.getElementById('katalog-kaca').scrollIntoView({behavior: 'smooth'})" 
+            class="text-gp-orange font-medium flex items-center gap-2 group-hover:gap-3 transition-all">
+        Read More <i class="fas fa-arrow-right text-sm"></i>
+    </button>
+</div>
                     <!-- Service Card 3 -->
                     <div class="group bg-white dark:bg-gp-dark rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800" data-aos="fade-up" data-aos-delay="300">
                         <div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/20 rounded-xl flex items-center justify-center text-gp-orange text-2xl mb-6 group-hover:bg-gp-orange group-hover:text-white transition-colors">
@@ -616,7 +606,7 @@
             </div>
         </section>
 <!-- Katalog Window Film Section -->
-<section id="katalog-kaca" class="py-24 bg-gray-50 dark:bg-gray-900">
+<section id="katalog-kaca" class="hidden py-10 bg-gray-50 dark:bg-gray-900">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="bg-white dark:bg-gp-dark p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-800" data-aos="fade-up">
       <h2 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white">Katalog Window Film</h2>
