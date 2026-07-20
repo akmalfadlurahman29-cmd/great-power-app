@@ -318,7 +318,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Service Card 1 -->
-<div onclick="event.stopPropagation(); document.getElementById('katalog-ppf').classList.remove('hidden')" 
+    <div onclick="event.stopPropagation(); document.getElementById('katalog-ppf').classList.remove('hidden'); document.getElementById('katalog-ppf').scrollIntoView({behavior: 'smooth'});" 
      class="cursor-pointer group bg-white ..." 
      data-aos="fade-up" data-aos-delay="100">
      <div class="w-14 h-14 bg-orange-100 dark:bg-orange-900/20 rounded-xl flex items-center justify-center text-gp-orange text-2xl mb-6 group-hover:bg-gp-orange group-hover:text-white transition-colors">
@@ -329,7 +329,7 @@
      <span class="text-gp-orange font-medium flex items-center gap-2 group-hover:gap-3 transition-all">
          Lihat Spesifikasi <i class="fas fa-arrow-right text-sm"></i>
      </span>
-</div>
+    </div>
 
                    <!-- Service Card 2 (Window Film) -->
 <div class="group bg-white dark:bg-gp-dark rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100 dark:border-gray-800" data-aos="fade-up" data-aos-delay="200">
@@ -343,7 +343,7 @@
     
     <!-- Bagian tombol dengan data-i18n agar tulisan Read More juga ikut berubah bahasa -->
     <button onclick="document.getElementById('katalog-kaca').classList.remove('hidden'); document.getElementById('katalog-kaca').scrollIntoView({behavior: 'smooth'})" 
-           class="text-gp-orange font-medium flex items-center gap-2 group-hover:gap-3 transition-all i18n" 
+           class="text-gp-orange font-medium flex items-center gap-2 group-hover:gap-3 transition-all" 
            data-i18n="btn_readmore">
        Read More <i class="fas fa-arrow-right text-sm"></i>
    </button>
@@ -704,18 +704,19 @@
         </button>
     </div>
 
-    <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white text-center">TPU Transparent Paint Protection Film</h3>
+    <!-- Judul Tabel dengan data-i18n -->
+    <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white text-center" data-i18n="ppf_title">TPU Transparent Paint Protection Film</h3>
     
     <table class="w-full text-left border-collapse min-w-[800px]">
         <thead>
             <tr class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 text-sm">
-                <th class="p-4 border-b">Model</th>
-                <th class="p-4 border-b">Base Material</th>
-                <th class="p-4 border-b">Thickness</th>
-                <th class="p-4 border-b">Adhesive</th>
-                <th class="p-4 border-b">Coating</th>
-                <th class="p-4 border-b">Warranty</th>
-                <th class="p-4 border-b">Grade</th>
+                <th class="p-4 border-b" data-i18n="ppf_th_model">Model</th>
+                <th class="p-4 border-b" data-i18n="ppf_th_material">Base Material</th>
+                <th class="p-4 border-b" data-i18n="ppf_th_thickness">Thickness</th>
+                <th class="p-4 border-b" data-i18n="ppf_th_adhesive">Adhesive</th>
+                <th class="p-4 border-b" data-i18n="ppf_th_coating">Coating</th>
+                <th class="p-4 border-b" data-i18n="ppf_th_warranty">Warranty</th>
+                <th class="p-4 border-b" data-i18n="ppf_th_grade">Grade</th>
             </tr>
         </thead>
         <tbody class="text-gray-600 dark:text-gray-400 text-sm">
@@ -725,8 +726,8 @@
                 <td class="p-4">7.5mil</td>
                 <td class="p-4">Ashland</td>
                 <td class="p-4">Kaxiu</td>
-                <td class="p-4">10 Years</td>
-                <td class="p-4">Premium</td>
+                <td class="p-4" data-i18n="ppf_10_years">10 Years</td>
+                <td class="p-4" data-i18n="ppf_grade_premium">Premium</td>
             </tr>
             <tr class="border-b hover:bg-gray-50 dark:hover:bg-gray-900">
                 <td class="p-4 font-bold text-gp-orange">KU9</td>
@@ -734,7 +735,7 @@
                 <td class="p-4">8.5mil</td>
                 <td class="p-4">Ashland</td>
                 <td class="p-4">Kaxiu</td>
-                <td class="p-4">10 Years</td>
+                <td class="p-4" data-i18n="ppf_10_years">10 Years</td>
                 <td class="p-4">-</td>
             </tr>
             <tr class="border-b hover:bg-gray-50 dark:hover:bg-gray-900">
@@ -743,8 +744,8 @@
                 <td class="p-4">7.5mil</td>
                 <td class="p-4">Linggu</td>
                 <td class="p-4">Tuohui</td>
-                <td class="p-4">5 Years</td>
-                <td class="p-4">Daily</td>
+                <td class="p-4" data-i18n="ppf_5_years">5 Years</td>
+                <td class="p-4" data-i18n="ppf_grade_daily">Daily</td>
             </tr>
             <tr class="border-b hover:bg-gray-50 dark:hover:bg-gray-900">
                 <td class="p-4 font-bold text-gp-orange">LT9</td>
@@ -752,7 +753,7 @@
                 <td class="p-4">8.5mil</td>
                 <td class="p-4">Linggu</td>
                 <td class="p-4">Tuohui</td>
-                <td class="p-4">5 Years</td>
+                <td class="p-4" data-i18n="ppf_5_years">5 Years</td>
                 <td class="p-4">-</td>
             </tr>
             <tr class="border-b hover:bg-gray-50 dark:hover:bg-gray-900">
@@ -761,7 +762,7 @@
                 <td class="p-4">9.5mil</td>
                 <td class="p-4">Linggu</td>
                 <td class="p-4">Tuohui</td>
-                <td class="p-4">5 Years</td>
+                <td class="p-4" data-i18n="ppf_5_years">5 Years</td>
                 <td class="p-4">-</td>
             </tr>
         </tbody>
